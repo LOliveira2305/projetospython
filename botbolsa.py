@@ -69,12 +69,12 @@ for a, b, c in zip(empresas_desv, cotacao_desv, porcentagens_desv):
     dict2["Horário"] = data_atual
     dados_desv.append(dict2)
 
-with open("desvalbolsa.json", "r+", encoding='utf-8') as file2:
-  file2_data = json.load(file2)
+with open("desvalbolsa.json", "r+", encoding='utf-8') as file:
+  file_data = json.load(file)
   for dados in dados_desv:
-    file2_data.append(dados)
-    file2.seek(0)
-  json.dump(file2_data, file2, ensure_ascii=False)
+    file_data.append(dados)
+    file.seek(0)
+  json.dump(file_data, file, ensure_ascii=False)
 
 tabela2 = pd.DataFrame.from_records(dados_desv, index = [i for i in range(1, 7)])
 print(f"As ações mais desvalorizadas do Ibovespa até o momento ({data_atual} horas): ")
